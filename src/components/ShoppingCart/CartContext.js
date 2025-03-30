@@ -9,10 +9,11 @@ export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]); // Store cart items globally
   // const [searchParams] = useSearchParams();
   // const user = searchParams.get("username");
+  const backendUrl = process.env.Back_end_url
 
 const updateCartLength = async (user) => {
     try {
-      const response = await fetch(`/cart/Cartlength?username=${user}`, {
+      const response = await fetch(`${backendUrl}/cart/Cartlength?username=${user}`, {
         method: "GET",
         credentials: "include",
         headers: {
@@ -41,7 +42,7 @@ const getCart = async (user) => {
     }
 
     try {
-      const response = await fetch(`/cart?username=${user}`, {
+      const response = await fetch(`${backendUrl}/cart?username=${user}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

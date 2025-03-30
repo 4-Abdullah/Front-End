@@ -12,12 +12,12 @@ const  HomePage = () => {
   // const [products, setProducts] = useState(null);
   //  const [loading, setLoading] = useState(true);
   //  const [error, setError] = useState(null);
- 
+  const backendUrl = process.env.Back_end_url
   
   useEffect(() => {
   (async () => {
       // try {
-        const response = await fetch("/products");
+        const response = await fetch(`${backendUrl}/products`);
 
         console.log("Status Code:", response.status);
         console.log("Response OK?", response.ok);

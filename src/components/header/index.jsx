@@ -20,7 +20,6 @@ console.log("Cart Length in Header:", cartLength);
 
   const [buttonText, setButtonText] = useState('');
       // const router = useRouter()
-  
       useEffect(() => {
         setButtonText(user ? user: 'Login');
         

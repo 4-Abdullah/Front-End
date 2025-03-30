@@ -21,6 +21,7 @@ const  Productdetails =( id )=>{
 const { updateCartLength } = useContext(CartContext);
   const increment = () => setquantity(quantity + 1);
   const decrement = () => setquantity(quantity - 1);
+  const backendUrl = process.env.Back_end_url
 
 
   // const import_Img = new Cloudinary({
@@ -36,7 +37,7 @@ const { updateCartLength } = useContext(CartContext);
 const HandleAddToCart = async() => {
 
 
-const response = await fetch(`/cart?username=${user}`, {
+const response = await fetch(`${backendUrl}/cart?username=${user}`, {
   method: "POST",
   
   credentials: "include", // ✅ Ensures cookies are sent/received

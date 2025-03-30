@@ -82,7 +82,8 @@ export default function LoginPage() {
 const onLogin = async (e) => {
    
   
-  const response = await fetch("/auth", {
+  const backendUrl = process.env.Back_end_url
+  const response = await fetch(`${backendUrl}/auth`, {
     method: "POST",
     headers: {
         "Content-Type": "application/json"

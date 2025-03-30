@@ -86,8 +86,10 @@ export default function SignupPage() {
         //     }
         //  });
 //  To handle Register through api  
+const backendUrl = process.env.Back_end_url
+
 const onSignup = async (e) => {
-  const response = await fetch("/register", {
+  const response = await fetch(`${backendUrl}/register`, {
     method: "POST",
     headers: {
         "Content-Type": "application/json"

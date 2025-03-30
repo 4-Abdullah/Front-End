@@ -14,12 +14,13 @@ const [products, setProducts] = useState([]);
       const search = searchParams.get("search");
     console.log(search, category);
 
+      const backendUrl = process.env.Back_end_url
     
 
     useEffect(() => {
       (async () => {
         try {
-          let url = "/products";
+          let url = `${backendUrl}/products`;
           if (search!=null) url += `?search=${search}`;
           if (category!=null) url += `/category?category=${category}`;
           

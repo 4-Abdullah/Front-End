@@ -44,11 +44,11 @@ const Order = () => {
 
 
     
-
-
+      const Stripe_publish_key = process.env.Stripe_publish_key
+      const backendUrl = process.env.Back_end_url
     const ProceedtoCheckout = async () => {
-      const stripe = await loadStripe("pk_test_51OD0scA3Cui0RH8L2BGNJ5ui30DDxYgx3w2LZcLbYzKCoJnxwHQpljxLfzLznMoKvMVqqEVGviKZXbrYNG3VvXy300UwCKxgeY")
-          const response = await fetch(`/order/${id}?username=${user}`, {
+      const stripe = await loadStripe(`${Stripe_publish_key}`);
+          const response = await fetch(`${backendUrl}/order/${id}?username=${user}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
