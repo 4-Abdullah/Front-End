@@ -44,8 +44,8 @@ const Order = () => {
 
 
     
-      const Stripe_publish_key = process.env.Stripe_publish_key
-      const backendUrl = process.env.Back_end_url
+      const Stripe_publish_key = process.env.REACT_APP_Stripe_publish_key
+      const backendUrl = process.env.REACT_APP_Back_end_url
     const ProceedtoCheckout = async () => {
       const stripe = await loadStripe(`${Stripe_publish_key}`);
           const response = await fetch(`https://mern-back-end-production.up.railway.app/order/${id}?username=${user}`, {
