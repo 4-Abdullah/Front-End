@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  min-height: 70.5vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -35,4 +38,21 @@
   to {
     transform: rotate(360deg);
   }
+}
+.multi-line-truncate {
+  display: -webkit-box;
+  line-clamp:initial;
+  -webkit-line-clamp: 2; /* Show only 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.list-header{
+  background-color: #282c34;
+  min-height: 100vh;
+  /* display: flex;
+  flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  /* font-size: calc(10px + 2vmin); */
+  color: white;
 }

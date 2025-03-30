@@ -1,13 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import { Suspense } from 'react';
+import Footer from './components/footer/index.js';
+import Header from './components/header/index.jsx';
 import App from './App';
+import { CartProvider } from './components/ShoppingCart/CartContext.js';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <CartProvider> 
+        <Header/>
+        <div className='App'>
+            <Suspense fallback={<div>Loading...</div>}>
+              <App />
+            </Suspense>
+          </div>
+        <Footer/>
+      </CartProvider>
+    </Router>
   </React.StrictMode>
 );
 
