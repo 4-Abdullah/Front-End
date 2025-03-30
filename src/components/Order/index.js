@@ -48,7 +48,7 @@ const Order = () => {
       const backendUrl = process.env.Back_end_url
     const ProceedtoCheckout = async () => {
       const stripe = await loadStripe(`${Stripe_publish_key}`);
-          const response = await fetch(`${backendUrl}/order/${id}?username=${user}`, {
+          const response = await fetch(`https://mern-back-end-production.up.railway.app/order/${id}?username=${user}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

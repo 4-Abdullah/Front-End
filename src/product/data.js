@@ -10,7 +10,7 @@ useEffect(() => {
   (async () => {
    
   const backendUrl = process.env.Back_end_url
-        const response = await fetch(`${backendUrl}/products/${id}`);
+        const response = await fetch(`https://mern-back-end-production.up.railway.app/products/${id}`);
 
         console.log("Status Code:", response.status);
         console.log("Response OK?", response.ok);

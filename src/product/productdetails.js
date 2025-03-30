@@ -37,7 +37,7 @@ const { updateCartLength } = useContext(CartContext);
 const HandleAddToCart = async() => {
 
 
-const response = await fetch(`${backendUrl}/cart?username=${user}`, {
+const response = await fetch(`https://mern-back-end-production.up.railway.app/cart?username=${user}`, {
   method: "POST",
   
   credentials: "include", // ✅ Ensures cookies are sent/received

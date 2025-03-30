@@ -83,7 +83,7 @@ const onLogin = async (e) => {
    
   
   const backendUrl = process.env.Back_end_url
-  const response = await fetch(`${backendUrl}/auth`, {
+  const response = await fetch(`https://mern-back-end-production.up.railway.app/auth`, {
     method: "POST",
     headers: {
         "Content-Type": "application/json"

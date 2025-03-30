@@ -20,7 +20,7 @@ const [products, setProducts] = useState([]);
     useEffect(() => {
       (async () => {
         try {
-          let url = `${backendUrl}/products`;
+          let url = `https://mern-back-end-production.up.railway.app/products`;
           if (search!=null) url += `?search=${search}`;
           if (category!=null) url += `/category?category=${category}`;
           

@@ -15,7 +15,7 @@ const  CartItem =( {productId, quantity } )=>{
   const backendUrl = process.env.Back_end_url
   const buyNow = () => {
     if(user!=null){
-      const destination=`${backendUrl}/order/${productId._id}?username=${user}`
+      const destination=`/order/${productId._id}?username=${user}`
       console.log(productId)
       navigate(destination, {state: {id: productId, quantity: quantity}})
   }

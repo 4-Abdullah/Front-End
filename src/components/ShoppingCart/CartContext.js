@@ -13,7 +13,7 @@ export const CartProvider = ({ children }) => {
 
 const updateCartLength = async (user) => {
     try {
-      const response = await fetch(`${backendUrl}/cart/Cartlength?username=${user}`, {
+      const response = await fetch(`https://mern-back-end-production.up.railway.app/cart/Cartlength?username=${user}`, {
         method: "GET",
         credentials: "include",
         headers: {
@@ -42,7 +42,7 @@ const getCart = async (user) => {
     }
 
     try {
-      const response = await fetch(`${backendUrl}/cart?username=${user}`, {
+      const response = await fetch(`https://mern-back-end-production.up.railway.app/cart?username=${user}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

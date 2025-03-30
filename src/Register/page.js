@@ -89,7 +89,7 @@ export default function SignupPage() {
 const backendUrl = process.env.Back_end_url
 
 const onSignup = async (e) => {
-  const response = await fetch(`${backendUrl}/register`, {
+  const response = await fetch(`https://mern-back-end-production.up.railway.app/register`, {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
