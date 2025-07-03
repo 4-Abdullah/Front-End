@@ -21,6 +21,7 @@ const Cart = () => {
 
   return(
     <>
+    <div>Cart</div>
       <div> {cartItems.map((p) => <CartItem key={p.id} {...p} />) } </div>
     </>
   )}

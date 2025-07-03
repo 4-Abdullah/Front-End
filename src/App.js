@@ -20,7 +20,13 @@ function App() {
  
   const location = useLocation();
   const hideLayout = location.pathname === "/success/:id" || location.pathname === "/cancel/:id";
-
+  // const authToken = localStorage.getItem('authToken')
+  // if(authToken){
+  //   setuserauthToken(true)
+  // }
+  // else{
+  //   setuserauthToken(false)
+  // }
   return (
     
 

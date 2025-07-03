@@ -9,11 +9,29 @@ export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]); // Store cart items globally
   // const [searchParams] = useSearchParams();
   // const user = searchParams.get("username");
-  const backendUrl = process.env.Back_end_url
+  const backendUrl = process.env.REACT_APP_Back_end_url
+  // const authToken = localStorage.getItem('authToken')
+  // const login = async() => {
+  //   localStorage.removeItem('authToken'); // Clear the token
+  //   setUserAuthenticated(false); // Update authentication state
+  //   if(authToken){
+  //     const response = await fetch(`${backendUrl}`, )
+  //   setuserauthToken(true)
+  // }
+  // else{
+  //   setuserauthToken(false)
+  // }
+  // };
+ 
+
+  // const logout = () => {
+  //   localStorage.removeItem('authToken'); // Clear the token
+  //   setUserAuthenticated(false); // Update authentication state
+  // };
 
 const updateCartLength = async (user) => {
     try {
-      const response = await fetch(`https://mern-back-end-production.up.railway.app/cart/Cartlength?username=${user}`, {
+      const response = await fetch(`${backendUrl}/cart/Cartlength?username=${user}`, {
         method: "GET",
         credentials: "include",
         headers: {
@@ -42,7 +60,7 @@ const getCart = async (user) => {
     }
 
     try {
-      const response = await fetch(`https://mern-back-end-production.up.railway.app/cart?username=${user}`, {
+      const response = await fetch(`${backendUrl}/cart?username=${user}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

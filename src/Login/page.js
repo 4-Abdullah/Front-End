@@ -54,21 +54,22 @@ export default function LoginPage() {
     }
   }
 
-  const [Username,setUsername] = useState('')
+  // const [Username,setUsername] = useState('')
   const [errorU,setErrorU] = useState('')
   const handleUsernameChange = (e) =>{
   const newUsername = e.target.value;
-  setUsername(newUsername);
-  if(newUsername.length>2 && newUsername.length<12){
+  const newEmail = e.target.value;
+  // setUsername(newUsername);
+  if((newUsername.length>2 && newUsername.length<12) || (newEmail.includes("@gmail.com")
+    ||newEmail.includes("@yahoo.com")||newEmail.includes("@hotmail.com")||newEmail.includes("@outlook.com"))){
     setErrorU('');
     }
     else{
-      if(newUsername.length>12){
-      setErrorU('Username is too long!');
-    }
-    else if(newUsername.length<3){
-      setErrorU('Username is too short!');
-    }
+       if(newUsername.length<3){
+        setErrorU('Username is too short!');
+      }
+     
+   
     }
   }
 
@@ -82,8 +83,8 @@ export default function LoginPage() {
 const onLogin = async (e) => {
    
   
-  const backendUrl = process.env.Back_end_url
-  const response = await fetch(`https://mern-back-end-production.up.railway.app/auth`, {
+  const backendUrl = process.env.REACT_APP_Back_end_url
+  const response = await fetch(`${backendUrl}/auth`, {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
@@ -93,15 +94,17 @@ const onLogin = async (e) => {
 })
 console.log("Status Code:", response.status); // Example: 200, 400, 500
 console.log("Response OK?", response.ok); // true if 2xx, false otherwise
+const data = await response.json()
+console.log("Response JSON:", data); 
 
-console.log("Response JSON:", await response.json()); 
-          
               // check response ok
               if (response.ok) {
                 // login successful, redirect to the application page
                 e.preventDefault();
+                localStorage.setItem('authToken', data.accessToken)
+                console.log(localStorage.getItem('authToken'))
                 // const destination = `/Application/?email=${user.email}`;
-                const destination = `/?username=${user.identifier}`
+                const destination = `/?username=${data.username}`
                 navigate(destination)
                 toast.success('Login successful')
                 console.log(response);
@@ -119,7 +122,7 @@ return(
       <form onSubmit={handle}  className="flex flex-col gap-4 absolute text-l w-64 h-50 bottom-40 left-1/2 -translate-x-1/2 -translate-y-1/2 font-italic">   
         <div  className="relative">
         <input required onChangeCapture={handleUsernameChange} value={user.identifier}  onChange={(e) =>setUser({ ...user, [e.target.name]: e.target.value})} className="p-2 text-black text-opacity-50 focus:text-black  w-full h-12 rounded-lg" placeholder='Username or email' name='identifier' type='text'/>
-        {errorU || errorE && <div className="text-xs text-black">{errorU || errorE}</div>}
+        {(errorU || errorE) && <div className="text-xs text-black">{errorU || errorE}</div>}
         
         </div>
         <div className="relative">

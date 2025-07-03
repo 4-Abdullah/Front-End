@@ -2,6 +2,8 @@
 import React, {useEffect, useState} from 'react'
 import Product from './product'
 import OIP from '../images/OIP.png'
+import toast from 'react-hot-toast';
+
 import { useNavigate, useSearchParams } from 'react-router-dom';
 const  HomePage = () => {
 
@@ -12,12 +14,14 @@ const  HomePage = () => {
   // const [products, setProducts] = useState(null);
   //  const [loading, setLoading] = useState(true);
   //  const [error, setError] = useState(null);
-  const backendUrl = process.env.Back_end_url
-  
+  const backendUrl = process.env.REACT_APP_Back_end_url
+  console.log(process.env.REACT_APP_Back_end_url)
+  // REACT_APP_Back_end_url
   useEffect(() => {
   (async () => {
       // try {
-        const response = await fetch(`https://mern-back-end-production.up.railway.app/products`);
+        const response = await fetch(`${backendUrl}/products`);
+        // const response = await fetch(`http://localhost:3500/products`);
 
         console.log("Status Code:", response.status);
         console.log("Response OK?", response.ok);
@@ -27,6 +31,7 @@ const  HomePage = () => {
         }
 
         const data = await response.json();
+
         console.log("Response JSON:", data);
 
         setProducts(data); // Store data in state
@@ -50,37 +55,38 @@ const  HomePage = () => {
 
     }
   }
-  // if (!data) return <div>Loading...</div>;
+  if (products.length<1) return <div className='flex items-center justify-center h-screen'><div className=" h-8 w-8 border-4 border-dashed border-spacing-2 rounded-full animate-spin border-blue-500"/></div>
+
 
   return (
     <main className='list-header'>
   <div className='container mx-auto my-2 px-4 '>
     <section className="text-gray-600 body-font">
     <div className="flex flex-wrap w-full md:mb-20">
-    <div class="relative bg-indigo-600 text-white">
-  <div class="container  mx-auto flex flex-col-reverse md:flex-row items-center py-10 px-6 md:py-20">
+    <div className="relative bg-indigo-600 text-white">
+  <div className="container  mx-auto flex flex-col-reverse md:flex-row items-center py-10 px-6 md:py-20">
      {/* Text Content  */}
-    <div class="text-center md:text-left md:w-1/2">
-      <h1 class="text-4xl font-bold mb-4">
-        Welcome to <span class="text-yellow-400">MyShop</span>
+    <div className="text-center md:text-left md:w-1/2">
+      <h1 className="text-4xl font-bold mb-4">
+        Welcome to <span className="text-yellow-400">MyShop</span>
       </h1>
-      <p class="text-lg mb-6">
+      <p className="text-lg mb-6">
         Explore the best deals on products you love! Shop now and enjoy exclusive discounts.
       </p>
       <button
         onClick={Home}
-        class="inline-block bg-yellow-400 text-indigo-600 font-semibold px-6 py-3 rounded-md hover:bg-yellow-500 transition duration-200"
+        className="inline-block bg-yellow-400 text-indigo-600 font-semibold px-6 py-3 rounded-md hover:bg-yellow-500 transition duration-200"
       >
         Shop Now
       </button>
     </div>
 
     {/* Image Content */}
-    <div class="md:w-1/2">
+    <div className="md:w-1/2">
       <img
         src={OIP}
         alt="Hero Banner"
-        class="w-full h-auto rounded-lg shadow-lg"
+        className="w-full h-auto rounded-lg shadow-lg"
       />
     </div>
   </div>

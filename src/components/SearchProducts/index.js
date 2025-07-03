@@ -14,13 +14,14 @@ const [products, setProducts] = useState([]);
       const search = searchParams.get("search");
     console.log(search, category);
 
-      const backendUrl = process.env.Back_end_url
+      const backendUrl = process.env.REACT_APP_Back_end_url
     
 
     useEffect(() => {
       (async () => {
         try {
-          let url = `https://mern-back-end-production.up.railway.app/products`;
+        setProducts([])
+          let url = `${backendUrl}/products`;
           if (search!=null) url += `?search=${search}`;
           if (category!=null) url += `/category?category=${category}`;
           
@@ -35,6 +36,7 @@ const [products, setProducts] = useState([]);
       })();
     }, [search,category]);
 
+  if (products.length<1) return <div className='flex items-center justify-center h-screen'><div className=" h-8 w-8 border-4 border-dashed border-spacing-2 rounded-full animate-spin border-blue-500"/></div>
   
   return (
     <main className='list-header'>
